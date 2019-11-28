@@ -11,7 +11,9 @@ public class TestController implements Controller {
 
     @Override
     public ModelAndView handleRequest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ModelAndView mv = new ModelAndView("/WEB-INF/jsp/hello.jsp");
+        mv.addObject("name", "John");
+        return mv;
     }
     
 }
