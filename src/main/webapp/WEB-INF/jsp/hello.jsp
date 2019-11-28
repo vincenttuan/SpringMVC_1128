@@ -6,7 +6,7 @@
         <title>Hello SpringMVC</title>
     </head>
     <body>
-        <h1>成功訪問SpringMVC</h1>
+        <h1>成功訪問 ${name} <%=request.getAttribute("name") %> SpringMVC</h1>
         <h1><%=new Date()%></h1>
     </body>
 </html>

@@ -12,7 +12,7 @@ public class TestController implements Controller {
     @Override
     public ModelAndView handleRequest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
         ModelAndView mv = new ModelAndView("/WEB-INF/jsp/hello.jsp");
-        mv.addObject("name", "John");
+        mv.addObject("name", "John"); // 相當於 request.setAttribute("name")
         return mv;
     }
     
