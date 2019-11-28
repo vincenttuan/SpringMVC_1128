@@ -15,6 +15,6 @@
           http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
           
-    
+    <bean name="/test" class="com.web.mvc.controller.TestController" />
     
 </beans>
