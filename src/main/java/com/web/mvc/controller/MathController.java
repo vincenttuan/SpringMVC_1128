@@ -26,4 +26,15 @@ public class MathController {
         return "math_result";
     }
     
+    @RequestMapping("/mul/{x}")
+    public String mul(@PathVariable Integer x,
+                      @RequestParam(name = "y", defaultValue = "0", required = false) Integer y,
+                      Model model) {
+        Integer sum = x * y;
+        model.addAttribute("sum", sum);
+        return "math_result";
+    }
+    
+    
+    
 }
