@@ -9,9 +9,9 @@
         <form class="pure-form">
             <fieldset>
                 <legend>BMI Result</legend>
-                <input type="number" value="${h}" disabled><p>
-                <input type="number" value="${w}" disabled><p>
-                <input type="number" value="${bmi}" readonly><p>
+                <input type="number" value="${bmi.h}" disabled><p>
+                <input type="number" value="${bmi.w}" disabled><p>
+                <input type="number" value="${bmi.bmi}" readonly><p>
                 <button type="button" class="pure-button pure-button-primary" onclick="history.back()">
                     返回
                 </button>
