@@ -16,7 +16,7 @@ public class AddController implements Controller {
             result = x + y;
         } catch (Exception e) {
         }
-        ModelAndView mv = new ModelAndView("/WEB-INF/jsp/result.jsp");
+        ModelAndView mv = new ModelAndView("result");
         mv.addObject("x", x);
         mv.addObject("y", y);
         mv.addObject("result", result);
