@@ -9,14 +9,16 @@ public class AddController implements Controller {
 
     @Override
     public ModelAndView handleRequest(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        int result = 0;
+        int x = 0, y = 0, result = 0;
         try {
-            int x = Integer.valueOf(req.getParameter("x"));
-            int y = Integer.valueOf(req.getParameter("y"));
+            x = Integer.valueOf(req.getParameter("x"));
+            y = Integer.valueOf(req.getParameter("y"));
             result = x + y;
         } catch (Exception e) {
         }
         ModelAndView mv = new ModelAndView("/WEB-INF/jsp/result.jsp");
+        mv.addObject("x", x);
+        mv.addObject("y", y);
         mv.addObject("result", result);
         return mv;
     }
