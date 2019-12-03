@@ -1,9 +1,13 @@
 package com.web.mvc.controller;
 
+import com.web.mvc.beans.DIV;
+import com.web.mvc.beans.MOD;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -34,6 +38,23 @@ public class MathController {
         model.addAttribute("sum", sum);
         return "math_result";
     }
+    
+    @RequestMapping(value = {"/div"}, method = {RequestMethod.POST})
+    public String div(DIV div, Model model) {
+        Integer sum = div.getX() / div.getY();
+        div.setSum(sum);
+        model.addAttribute("sum", div);
+        return "math_result";
+    }
+    
+    @RequestMapping(value = {"/mod"}, method = {RequestMethod.POST})
+    public String mod(@ModelAttribute("sum") MOD mod) {
+        Integer sum = mod.getX() % mod.getY();
+        mod.setSum(sum);
+        return "math_result";
+    }
+    
+    
     
     
     

@@ -6,9 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body style="padding: 15px">
-        <form class="pure-form" method="get" action="../mvc/math/div">
+        <form class="pure-form" method="post" action="../mvc/math/div">
             <fieldset>
                 <legend>Math (DIVISION)</legend>
+                <input type="number" placeholder="請輸入數字" name="x"><p>
+                <input type="number" placeholder="請輸入數字" name="y"><p>
+                <button type="submit" class="pure-button pure-button-primary">計算</button>
+            </fieldset>
+        </form>
+        <form class="pure-form" method="post" action="../mvc/math/mod">
+            <fieldset>
+                <legend>Math (MOD)</legend>
                 <input type="number" placeholder="請輸入數字" name="x"><p>
                 <input type="number" placeholder="請輸入數字" name="y"><p>
                 <button type="submit" class="pure-button pure-button-primary">計算</button>
