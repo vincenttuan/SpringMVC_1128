@@ -10,7 +10,7 @@ public class WeatherDAOTest {
 
     @Test
     public void testFind() throws Exception {
-        System.out.println(new WeatherDAO().find("Taoyuan"));
+        System.out.println(new WeatherDAOImpl().find("Taoyuan"));
     }
     
 }
