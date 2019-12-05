@@ -12,8 +12,4 @@ public class WeatherDAO {
         String json = new Scanner(new URL(urlString).openStream()).useDelimiter("\\Z").next();
         return json;
     }
-    
-    public static void main(String[] args) throws Exception {
-        System.out.println(new WeatherDAO().find("Taoyuan"));
-    }
 }
