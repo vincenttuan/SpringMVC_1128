@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LottoServiceImpl implements LottoService {
-
+    
     @Override
     public Map<Integer, Set<Integer>> lotto539(Integer count) {
         Map<Integer, Set<Integer>> lottos = new LinkedHashMap<>();
