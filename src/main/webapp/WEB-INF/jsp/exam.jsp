@@ -47,7 +47,7 @@
             <tbody>
                 <c:forEach var="e" items="${exams}">
                     <tr onmouseover="this.style.background = '#CCCCCC'" onmouseout="this.style.background = 'white'">
-                        <td><a href="./update/{id}">${e.id}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/mvc/exam/get/${e.id}">${e.id}</a></td>
                         <td>${e.exam}</td>
                         <td>${e.slot}</td>
                         <td>${e.pay}</td>
