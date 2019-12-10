@@ -28,6 +28,11 @@ public class Exam {
     public String[] getSlot() {
         return slot;
     }
+    
+    // 將陣列轉字串
+    public String getSlotToString() {
+        return Arrays.toString(slot);
+    }
 
     public void setSlot(String[] slot) {
         this.slot = slot;

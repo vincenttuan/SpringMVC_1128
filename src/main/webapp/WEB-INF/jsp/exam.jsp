@@ -49,7 +49,7 @@
                     <tr onmouseover="this.style.background = '#CCCCCC'" onmouseout="this.style.background = 'white'">
                         <td><a href="${pageContext.request.contextPath}/mvc/exam/get/${e.id}">${e.id}</a></td>
                         <td>${e.exam}</td>
-                        <td>${e.slot}</td>
+                        <td>${e.slotToString}</td>
                         <td>${e.pay}</td>
                         <td>${e.note}</td>
                     </tr>
