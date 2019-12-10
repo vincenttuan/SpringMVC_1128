@@ -20,7 +20,7 @@
             <tbody>
                 <c:forEach var="s" items="${students}">
                 <tr>
-                    <td>${s.name}</td>
+                    <td><a href="./get/${s.name}">${s.name}</a></td>
                     <td>${s.sex}</td>
                 </tr>
                 </c:forEach>

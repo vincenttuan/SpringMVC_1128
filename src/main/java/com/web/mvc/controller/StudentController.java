@@ -2,9 +2,11 @@ package com.web.mvc.controller;
 
 import com.web.mvc.beans.Student;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,5 +26,14 @@ public class StudentController {
         students.add(student);
         model.addAttribute("students", students);
         return "student_list";
+    }
+    
+    @RequestMapping(value = "/get/{name}", method = RequestMethod.GET)
+    @ResponseBody
+    public String get(@PathVariable("name") String name, Model model) {
+        Optional<Student> student = students.stream()
+                .filter(s -> s.getName().equals(name))
+                .findAny();
+        return student.isPresent()?student.get().toString():new Student().toString();
     }
 }
