@@ -10,13 +10,13 @@
     </head>
     <body style="padding: 15px">
         ${student}
-        <form:form modelAttribute="student" class="pure-form" method="post" action="../mvc/student/add">
+        <form:form modelAttribute="student" class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/student/${action}">
             <fieldset>
                 <legend>Student</legend>
                 <form:input path="name" placeholder="請輸入姓名" /><p>
                 <form:radiobutton value="boy" path="sex" />男 
                 <form:radiobutton value="girl" path="sex" />女<p>
-                <button type="submit" class="pure-button pure-button-primary">修改</button>
+                <button type="submit" class="pure-button pure-button-primary">${action}</button>
             </fieldset>
         </form:form>
     </body>

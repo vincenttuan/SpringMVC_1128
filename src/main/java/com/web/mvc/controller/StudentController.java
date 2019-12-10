@@ -21,6 +21,13 @@ public class StudentController {
         students.add(new Student("Anita", "girl"));
     }
     
+    @RequestMapping(value = "/input")
+    public String input(Model model) {
+        model.addAttribute("student", new Student());
+        model.addAttribute("action", "add");
+        return "student";
+    }
+    
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(Student student, Model model) {
         students.add(student);
@@ -34,6 +41,13 @@ public class StudentController {
                 .filter(s -> s.getName().equals(name))
                 .findAny();
         model.addAttribute("student", student.isPresent()?student.get():new Student());
+        model.addAttribute("action", "update");
         return "student";
+    }
+    
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    public String update(Student student, Model model) {
+        return "update";
     }
 }
