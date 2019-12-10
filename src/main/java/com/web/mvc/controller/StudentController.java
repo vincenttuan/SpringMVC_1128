@@ -29,11 +29,11 @@ public class StudentController {
     }
     
     @RequestMapping(value = "/get/{name}", method = RequestMethod.GET)
-    @ResponseBody
     public String get(@PathVariable("name") String name, Model model) {
         Optional<Student> student = students.stream()
                 .filter(s -> s.getName().equals(name))
                 .findAny();
-        return student.isPresent()?student.get().toString():new Student().toString();
+        model.addAttribute("student", student.isPresent()?student.get():new Student());
+        return "student";
     }
 }
