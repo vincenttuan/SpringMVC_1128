@@ -20,10 +20,9 @@ public class StudentController {
     }
     
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    @ResponseBody
     public String add(Student student, Model model) {
         students.add(student);
         model.addAttribute("students", students);
-        return students.toString();
+        return "student_list";
     }
 }
