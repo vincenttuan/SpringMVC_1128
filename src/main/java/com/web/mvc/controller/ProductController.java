@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/product")
+@SessionAttributes(value = {"products", "groups"})
 public class ProductController {
     
     @Autowired
@@ -26,8 +28,8 @@ public class ProductController {
     @RequestMapping("/input")
     public String input(Model model) {
         model.addAttribute("product", new Product());
-        model.addAttribute("groups", ProductService.groups.values());
         model.addAttribute("action", "save");
+        model.addAttribute("groups", ProductService.groups.values());
         model.addAttribute("products", ProductService.products);
         return "product";
     }
@@ -36,9 +38,9 @@ public class ProductController {
     public String save(@ModelAttribute Product product, BindingResult result, Model model) {
         this.productValidator.validate(product, result);
         if(result.hasErrors()) {
-            model.addAttribute("groups", ProductService.groups.values());
             model.addAttribute("action", "save");
-            model.addAttribute("products", ProductService.products);
+            //model.addAttribute("groups", ProductService.groups.values());
+            //model.addAttribute("products", ProductService.products);
             return "product";
         }
         productService.save(product);
@@ -49,10 +51,10 @@ public class ProductController {
     public String get(@PathVariable("name") String name, Model model) {
         Product product = productService.get(name);
         model.addAttribute("product", product);
-        model.addAttribute("groups", ProductService.groups.values());
         model.addAttribute("action", "update");
         model.addAttribute("readonly", "true");
-        model.addAttribute("products", ProductService.products);
+        //model.addAttribute("groups", ProductService.groups.values());
+        //model.addAttribute("products", ProductService.products);
         return "product";
     }
     
