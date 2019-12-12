@@ -46,6 +46,7 @@ public class ProductServiceImpl implements ProductService {
                     p.setGroup(getGroup(product));
                     p.setAmount(product.getAmount());
                     p.setPrice(product.getPrice());
+                    p.setDate(product.getDate());
                 });
         return true;
     }

@@ -1,6 +1,7 @@
 package com.web.mvc.validator;
 
 import com.web.mvc.beans.Product;
+import java.util.Date;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -25,6 +26,10 @@ public class ProductValidator implements Validator {
         
         if(product.getAmount() <= 0) {
             errors.rejectValue("amount", "product.amount.invalid");
+        }
+        
+        if(product.getDate() == null || product.getDate().after(new Date()) ) {
+            errors.rejectValue("date", "date.invalid");
         }
     }
     
