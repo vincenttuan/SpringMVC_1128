@@ -19,6 +19,13 @@ public class ProductValidator implements Validator {
         Product product = (Product)object;
         ValidationUtils.rejectIfEmpty(errors, "name", "product.name.required");
         
+        if(product.getPrice() < 10 || product.getPrice() > 100) {
+            errors.rejectValue("price", "product.price.invalid");
+        }
+        
+        if(product.getAmount() <= 0) {
+            errors.rejectValue("amount", "product.amount.invalid");
+        }
     }
     
 }
