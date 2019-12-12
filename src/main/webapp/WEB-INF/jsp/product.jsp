@@ -17,7 +17,7 @@
                             <legend>Product Form Post（商品上架）</legend>
                             分類: <form:select path="group.gid"
                                          items="${groups}" itemLabel="gname" itemValue="gid" /><p />
-                            品名: <form:input path="name" placeholder="請輸入商品名稱" /><p />
+                            品名: <form:input path="name" placeholder="請輸入商品名稱" readonly="${readonly}" /><p />
                             價格: <form:input path="price" placeholder="請輸入商品價格" /><p />
                             數量: <form:input path="amount" placeholder="請輸入商品數量" /><p />
                             <button type="submit" class="pure-button pure-button-primary">${action}</button>
