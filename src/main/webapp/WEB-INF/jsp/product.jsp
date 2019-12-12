@@ -23,6 +23,8 @@
                             <button type="submit" class="pure-button pure-button-primary">${action}</button>
                             <button type="button" class="pure-button pure-button-primary"
                                     onclick="location.href='${pageContext.request.contextPath}/mvc/product/input'">reset</button>
+                            <p />   
+                            <form:errors path="*" />
                         </fieldset>
                     </form:form>
                 </td>

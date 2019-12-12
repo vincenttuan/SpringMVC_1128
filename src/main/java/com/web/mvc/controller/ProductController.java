@@ -3,9 +3,11 @@ package com.web.mvc.controller;
 import com.google.gson.Gson;
 import com.web.mvc.beans.Product;
 import com.web.mvc.service.ProductService;
+import com.web.mvc.validator.ProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,10 @@ public class ProductController {
     
     @Autowired
     private ProductService productService;
-
+    
+    @Autowired
+    private ProductValidator productValidator;
+    
     @RequestMapping("/input")
     public String input(Model model) {
         model.addAttribute("product", new Product());
@@ -28,7 +33,14 @@ public class ProductController {
     }
     
     @RequestMapping("/save")
-    public String save(@ModelAttribute Product product, Model model) {
+    public String save(@ModelAttribute Product product, BindingResult result, Model model) {
+        this.productValidator.validate(product, result);
+        if(result.hasErrors()) {
+            model.addAttribute("groups", ProductService.groups.values());
+            model.addAttribute("action", "save");
+            model.addAttribute("products", ProductService.products);
+            return "product";
+        }
         productService.save(product);
         return "redirect:/mvc/product/input";
     }
