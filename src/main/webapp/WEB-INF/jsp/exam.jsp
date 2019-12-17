@@ -30,8 +30,9 @@
                 已繳 <form:radiobutton path="pay" value="true" />
                 未繳 <form:radiobutton path="pay" value="false" /><p/>
                 備註：
-                <form:textarea path="note" />
-                <button type="submit" class="pure-button pure-button-primary">${action}</button>
+                <form:textarea path="note" /><p/>
+                <button type="submit" class="pure-button pure-button-primary">${action}</button><p/>
+                <form:errors path="*" />
             </fieldset>
         </form:form>
         <table class="pure-table pure-table-bordered">

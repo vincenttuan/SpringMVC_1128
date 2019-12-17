@@ -1,18 +1,26 @@
 package com.web.mvc.controller;
 
 import com.web.mvc.beans.Exam;
+import com.web.mvc.validator.ExamValidator;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/exam")
 public class ExamController {
+    
     static List<Exam> exams = new CopyOnWriteArrayList<>();
+    
+    @Autowired
+    private ExamValidator examValidator;
     
     @RequestMapping("/input")
     public String input(Model model) {
@@ -23,9 +31,12 @@ public class ExamController {
     }
     
     @RequestMapping("/add")
-    public String add(Exam exam, Model model) {
-        exams.add(exam);
-        model.addAttribute("exam", new Exam());
+    public String add(Exam exam, BindingResult result, Model model) {
+        this.examValidator.validate(exam, result);
+        if(!result.hasErrors()) {
+            exams.add(exam);
+            model.addAttribute("exam", new Exam());
+        }
         model.addAttribute("exams", exams);
         model.addAttribute("action", "add");
         return "exam";
