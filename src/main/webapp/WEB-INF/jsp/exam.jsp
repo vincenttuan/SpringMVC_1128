@@ -15,7 +15,7 @@
         <form:form modelAttribute="exam" class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/exam/${action}">
             <fieldset>
                 <legend>Exam Form Post（考試註冊）</legend>
-                <form:input path="id" placeholder="請輸入學員編號" />
+                <form:input path="id" placeholder="請輸入學員編號" readonly="${readonly}" />
                 <form:select path="exam" >
                     <form:option value="">考試代號</form:option>
                     <form:option value="808">OCP I 808</form:option>

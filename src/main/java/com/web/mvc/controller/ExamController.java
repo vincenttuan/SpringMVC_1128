@@ -39,6 +39,23 @@ public class ExamController {
         model.addAttribute("exam", exam.isPresent() ? exam.get() : new Exam());
         model.addAttribute("exams", exams);
         model.addAttribute("action", "update");
+        model.addAttribute("readonly", "true");
+        return "exam";
+    }
+    
+    @RequestMapping("/update")
+    public String update(Exam exam, Model model) {
+        String id = exam.getId();
+        Exam oExam = exams.stream().filter(e -> e.getId().equals(id)).findAny().get();
+        if(oExam != null) {
+            oExam.setExam(exam.getExam());
+            oExam.setNote(exam.getNote());
+            oExam.setPay(exam.getPay());
+            oExam.setSlot(exam.getSlot());
+        }
+        model.addAttribute("exam", new Exam());
+        model.addAttribute("exams", exams);
+        model.addAttribute("action", "add");
         return "exam";
     }
     
