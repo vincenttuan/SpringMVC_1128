@@ -35,7 +35,7 @@
                 var data = google.visualization.arrayToDataTable([
                     ['繳費', '人數'],
                     <c:forEach items="${stat2}" var="s">
-                    ['${s.key}', ${s.value}],
+                    ['${s.key?"已繳":"未繳"}', ${s.value}],
                     </c:forEach>
                 ]);
                 var options = {
@@ -74,15 +74,6 @@
                             <form:errors path="*" />
                         </fieldset>
                     </form:form>
-
-                </td>
-                <td rowspan="2" valign="top">
-                    <div id="piechart" style="width: 500px; height: 300px;"></div>
-                    <div id="barchart" style="width: 500px; height: 300px;"></div>
-                </td>
-            </tr>
-            <tr>
-                <td valign="top">
                     <table class="pure-table pure-table-bordered">
                         <thead>
                             <tr style="cursor: pointer" >
@@ -116,8 +107,14 @@
                             </c:forEach>
                         </tbody>
                     </table>
+
+                </td>
+                <td valign="top">
+                    <div id="piechart" style="width: 500px; height: 300px;"></div>
+                    <div id="barchart" style="width: 500px; height: 300px;"></div>
                 </td>
             </tr>
+            
         </table>
 
     </body>
