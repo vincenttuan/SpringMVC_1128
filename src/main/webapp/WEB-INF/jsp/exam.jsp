@@ -13,24 +13,36 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
             google.charts.load('current', {'packages': ['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
+            google.charts.setOnLoadCallback(drawPieChart);
+            google.charts.setOnLoadCallback(drawBarChart);
 
-            function drawChart() {
-
+            function drawPieChart() {
                 var data = google.visualization.arrayToDataTable([
                     ['考試代號', '人數'],
-            <c:forEach items="${stat}" var="s">
+                    <c:forEach items="${stat}" var="s">
                     ['${s.key}', ${s.value}],
-            </c:forEach>
+                    </c:forEach>
                 ]);
-
                 var options = {
                     title: '考試分組',
                     is3D: true,
                 };
-
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
+                chart.draw(data, options);
+            }
+            
+            function drawBarChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['繳費', '人數'],
+                    <c:forEach items="${stat2}" var="s">
+                    ['${s.key}', ${s.value}],
+                    </c:forEach>
+                ]);
+                var options = {
+                    title: '繳費分組',
+                    is3D: true,
+                };
+                var chart = new google.visualization.BarChart(document.getElementById('barchart'));
                 chart.draw(data, options);
             }
         </script>
@@ -65,11 +77,12 @@
 
                 </td>
                 <td rowspan="2" valign="top">
-                    <div id="piechart" style="width: 900px; height: 500px;"></div>
+                    <div id="piechart" style="width: 500px; height: 300px;"></div>
+                    <div id="barchart" style="width: 500px; height: 300px;"></div>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td valign="top">
                     <table class="pure-table pure-table-bordered">
                         <thead>
                             <tr style="cursor: pointer" >

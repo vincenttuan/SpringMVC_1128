@@ -31,6 +31,7 @@ public class ExamController {
         model.addAttribute("exams", exams);
         model.addAttribute("action", "add");
         model.addAttribute("stat", stat());
+        model.addAttribute("stat2", stat2());
         return "exam";
     }
     
@@ -44,6 +45,7 @@ public class ExamController {
         model.addAttribute("exams", exams);
         model.addAttribute("action", "add");
         model.addAttribute("stat", stat());
+        model.addAttribute("stat2", stat2());
         return "exam";
     }
     
@@ -57,6 +59,7 @@ public class ExamController {
         model.addAttribute("action", "update");
         model.addAttribute("readonly", "true");
         model.addAttribute("stat", stat());
+        model.addAttribute("stat2", stat2());
         return "exam";
     }
     
@@ -82,6 +85,11 @@ public class ExamController {
     public Map<String, Long> stat() {
         Map<String, Long> stat = exams.stream().collect(groupingBy(Exam::getExam, counting()));
         return stat;
+    }
+    
+    public Map<String, Long> stat2() {
+        Map<String, Long> stat2 = exams.stream().collect(groupingBy(Exam::getPay, counting()));
+        return stat2;
     }
     
 }
