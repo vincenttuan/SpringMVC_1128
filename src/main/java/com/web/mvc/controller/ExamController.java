@@ -59,4 +59,12 @@ public class ExamController {
         return "exam";
     }
     
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable("id") String id, Model model) {
+        exams.removeIf(e -> e.getId().equals(id));
+        model.addAttribute("exam", new Exam());
+        model.addAttribute("exams", exams);
+        model.addAttribute("action", "add");
+        return "exam";
+    }
 }

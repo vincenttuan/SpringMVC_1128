@@ -34,9 +34,10 @@
                 <button type="submit" class="pure-button pure-button-primary">${action}</button>
             </fieldset>
         </form:form>
-        <table class="pure-table pure-table-bordered" width="100%">
+        <table class="pure-table pure-table-bordered">
             <thead>
                 <tr style="cursor: pointer" >
+                    <th colspan="2">delete / update</th>
                     <th>id</th>
                     <th>exam</th>
                     <th>slot</th>
@@ -47,7 +48,17 @@
             <tbody>
                 <c:forEach var="e" items="${exams}">
                     <tr onmouseover="this.style.background = '#CCCCCC'" onmouseout="this.style.background = 'white'">
-                        <td><a href="${pageContext.request.contextPath}/mvc/exam/get/${e.id}">${e.id}</a></td>
+                        <td>
+                            <button type="button" class="pure-button pure-button-primary" onclick="location.href = '${pageContext.request.contextPath}/mvc/exam/delete/${e.id}'">
+                                Delete
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="pure-button pure-button-primary" onclick="location.href = '${pageContext.request.contextPath}/mvc/exam/get/${e.id}'">
+                                Update
+                            </button>
+                        </td>
+                        <td>${e.id}</td>
                         <td>${e.exam}</td>
                         <td>${e.slotToString}</td>
                         <td>${e.pay}</td>
