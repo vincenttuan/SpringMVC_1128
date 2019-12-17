@@ -35,6 +35,7 @@
                 <form:errors path="*" />
             </fieldset>
         </form:form>
+        ${stat}
         <table class="pure-table pure-table-bordered">
             <thead>
                 <tr style="cursor: pointer" >
