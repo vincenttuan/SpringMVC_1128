@@ -21,4 +21,9 @@ public class ECommerceServiceImpl implements ECommerceService {
     public List<?> queryPurchaseOrder(int customerId) {
         return dao.queryPurchaseOrderRowList(customerId);
     }
+    
+    @Override
+    public List<?> queryPurchaseOrder() {
+        return dao.queryPurchaseOrderRowList();
+    }
 }

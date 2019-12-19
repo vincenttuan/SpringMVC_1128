@@ -8,4 +8,5 @@ public interface ECommerceDao {
     List<?> queryCustomer();
     List<Customer> queryCustomerRowList();
     List<PurchaseOrder> queryPurchaseOrderRowList(int customerId);
+    List<PurchaseOrder> queryPurchaseOrderRowList();
 }

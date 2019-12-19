@@ -14,7 +14,19 @@ import org.springframework.stereotype.Repository;
 public class ECommerceDaoImpl implements ECommerceDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
+    
+    RowMapper rm = (ResultSet rs, int i) -> {
+            PurchaseOrder po = new PurchaseOrder();
+            po.setOrderNum(rs.getInt("ORDER_NUM"));
+            po.setCustomerId(rs.getInt("CUSTOMER_ID"));
+            po.setProductId(rs.getInt("PRODUCT_ID"));
+            po.setQuantity(rs.getInt("QUANTITY"));
+            po.setShippingCost(rs.getDouble("SHIPPING_COST"));
+            po.setSalesDate(rs.getString("SHIPPING_DATE"));
+            po.setFreightCompany(rs.getString("FREIGHT_COMPANY"));
+            return po;
+        };
+    
     @Override
     public List<?> queryCustomer() {
         String sql = "SELECT * FROM APP.CUSTOMER";
@@ -46,19 +58,13 @@ public class ECommerceDaoImpl implements ECommerceDao {
     @Override
     public List<PurchaseOrder> queryPurchaseOrderRowList(int customerId) {
         String sql = "SELECT * FROM APP.PURCHASE_ORDER WHERE CUSTOMER_ID = " + customerId;
-        RowMapper rm = (ResultSet rs, int i) -> {
-            PurchaseOrder po = new PurchaseOrder();
-            po.setOrderNum(rs.getInt("ORDER_NUM"));
-            po.setCustomerId(rs.getInt("CUSTOMER_ID"));
-            po.setProductId(rs.getInt("PRODUCT_ID"));
-            po.setQuantity(rs.getInt("QUANTITY"));
-            po.setShippingCost(rs.getDouble("SHIPPING_COST"));
-            po.setSalesDate(rs.getString("SHIPPING_DATE"));
-            po.setFreightCompany(rs.getString("FREIGHT_COMPANY"));
-            return po;
-        };
         return jdbcTemplate.query(sql, rm);
     }
     
+    @Override
+    public List<PurchaseOrder> queryPurchaseOrderRowList() {
+        String sql = "SELECT * FROM APP.PURCHASE_ORDER";
+        return jdbcTemplate.query(sql, rm);
+    }
     
 }
