@@ -1,6 +1,7 @@
 package com.web.mvc.repository;
 
 import com.web.mvc.beans.Customer;
+import com.web.mvc.beans.PurchaseOrder;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -38,6 +39,17 @@ public class ECommerceDaoImpl implements ECommerceDao {
             customer.setEmail(rs.getString("EMAIL"));
             customer.setCreditLimit(rs.getInt("CREDIT_LIMIT"));
             return customer;
+        };
+        return jdbcTemplate.query(sql, rm);
+    }
+
+    @Override
+    public List<PurchaseOrder> queryPurchaseOrderRowList(int customerId) {
+        String sql = "SELECT * FROM APP.PURCHASE_ORDER WHERE CUSTOMER_ID = " + customerId;
+        RowMapper rm = (ResultSet rs, int i) -> {
+            PurchaseOrder po = new PurchaseOrder();
+            
+            return po;
         };
         return jdbcTemplate.query(sql, rm);
     }
