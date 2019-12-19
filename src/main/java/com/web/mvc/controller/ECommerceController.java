@@ -33,4 +33,10 @@ public class ECommerceController {
         return new Gson().toJson(service.queryPurchaseOrder(customerId));
     }
     
+    @RequestMapping("/queryPurchaseOrder/{customerId}")
+    public String queryPurchaseOrder(@PathVariable int customerId, Model model) {
+         model.addAttribute("purchaseOrders", service.queryPurchaseOrder(customerId));
+        return "purchase_order";
+    }
+    
 }

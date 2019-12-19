@@ -48,7 +48,13 @@ public class ECommerceDaoImpl implements ECommerceDao {
         String sql = "SELECT * FROM APP.PURCHASE_ORDER WHERE CUSTOMER_ID = " + customerId;
         RowMapper rm = (ResultSet rs, int i) -> {
             PurchaseOrder po = new PurchaseOrder();
-            
+            po.setOrderNum(rs.getInt("ORDER_NUM"));
+            po.setCustomerId(rs.getInt("CUSTOMER_ID"));
+            po.setProductId(rs.getInt("PRODUCT_ID"));
+            po.setQuantity(rs.getInt("QUANTITY"));
+            po.setShippingCost(rs.getDouble("SHIPPING_COST"));
+            po.setSalesDate(rs.getString("SHIPPING_DATE"));
+            po.setFreightCompany(rs.getString("FREIGHT_COMPANY"));
             return po;
         };
         return jdbcTemplate.query(sql, rm);

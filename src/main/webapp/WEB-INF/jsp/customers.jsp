@@ -34,7 +34,11 @@
                     <tbody>
                         <c:forEach var="c" items="${customers}">
                             <tr onmouseover="this.style.background = '#CCCCCC'" onmouseout="this.style.background = 'white'">
-                                <td>${c.customerId}</td>
+                                <td>
+                                    <a href="./queryPurchaseOrder/${c.customerId}">
+                                        ${c.customerId}
+                                    </a>
+                                </td>
                                 <td>${c.discountCode}</td>
                                 <td>${c.zip}</td>
                                 <td>${c.name}</td>
