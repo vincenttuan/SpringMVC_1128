@@ -2,6 +2,6 @@ package com.web.mvc.service;
 
 import java.util.List;
 
-public interface CustomerService {
+public interface ECommerceService {
     List<?> queryCustomer();
 }

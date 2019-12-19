@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-@Repository(value = "cusDao")
-public class CustomerDaoImpl implements CustomerDao {
+@Repository(value = "ecDao")
+public class ECommerceDaoImpl implements ECommerceDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 

@@ -1,16 +1,16 @@
 package com.web.mvc.service;
 
-import com.web.mvc.repository.CustomerDao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import com.web.mvc.repository.ECommerceDao;
 
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class ECommerceServiceImpl implements ECommerceService {
     @Autowired
-    @Qualifier(value = "cusDao")
-    private CustomerDao dao;
+    @Qualifier(value = "ecDao")
+    private ECommerceDao dao;
 
     @Override
     public List<?> queryCustomer() {
