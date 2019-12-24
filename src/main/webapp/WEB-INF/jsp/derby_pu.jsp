@@ -42,7 +42,10 @@
                         <td valign="top" style="padding: 5px">
                             <form class="pure-form">
                                 <fieldset>
-                                    <legend>總金額: ${PU_TOTAL[0].TOTAL}</legend>
+                                    <legend>總金額: 
+                                        <fmt:formatNumber type="currency" 
+                                                          value="${PU_TOTAL[0].TOTAL}" />
+                                    </legend>
                                 </fieldset>
                             </form>
                         </td>
@@ -74,15 +77,15 @@
                                         <c:forEach var="p" items="${PU_VIEW}">
                                             <tr onmouseover="this.style.background = '#CCCCCC'" onmouseout="this.style.background = 'white'">
                                                 <td align="center">${p.ORDER_NUM}</td>
-                                                <td>${p.CUSTOMER_ID}</td>
+                                                <td align="center">${p.CUSTOMER_ID}</td>
                                                 <td>${p.CUSTOMER_NAME}</td>
-                                                <td>${p.PRODUCT_ID}</td>
+                                                <td align="center">${p.PRODUCT_ID}</td>
                                                 <td>${p.PRODUCT_NAME}</td>
                                                 <td>${p.PRODUCT_CODE_NAME}</td>
-                                                <td>${p.QUANTITY}</td>
-                                                <td>${p.PURCHASE_COST}</td>
-                                                <td>${p.RATE}</td>
-                                                <td>${p.SUBTOTAL}</td>
+                                                <td align="right">${p.QUANTITY}</td>
+                                                <td align="right">${p.PURCHASE_COST}</td>
+                                                <td align="right">${p.RATE}</td>
+                                                <td align="right">${p.SUBTOTAL}</td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
