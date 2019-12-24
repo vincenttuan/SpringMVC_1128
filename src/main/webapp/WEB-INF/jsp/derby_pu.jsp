@@ -18,14 +18,16 @@
                                 <table class="pure-table pure-table-bordered">
                                     <thead>
                                         <tr>
+                                            <th>no</th>
                                             <th>customer_id</th>
                                             <th>customer_name</th>
                                             <th>total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="t" items="${PU_TOP10}">
+                                        <c:forEach var="t" varStatus="n" items="${PU_TOP10}">
                                             <tr onmouseover="this.style.background = '#CCCCCC'" onmouseout="this.style.background = 'white'">
+                                                <td>${n.count}</td>
                                                 <td align="center">${t.customer_id}</td>
                                                 <td>${t.customer_name}</td>
                                                 <td align="right">${t.total}</td>
