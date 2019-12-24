@@ -14,20 +14,23 @@ public class DerbyController {
 
     @Autowired
     private DerbyService service;
-
+    
+    // http://localhost:8080/SpringMVC_1128/mvc/derby/query/PU_VIEW
     @RequestMapping("/query/PU_VIEW")
     @ResponseBody
     public String queryPU_VIEW() {
         return new Gson().toJson(service.queryPU_VIEW());
     }
-
+    
+    // http://localhost:8080/SpringMVC_1128/mvc/derby/get/PU_TOTAL
     @RequestMapping("/get/PU_TOTAL")
     @ResponseBody
     public String getPU_TOTAL(Model model) {
         return new Gson().toJson(service.getPU_TOTAL());
     }
-
-    @RequestMapping("/query/TOP10")
+    
+    // http://localhost:8080/SpringMVC_1128/mvc/derby/query/PU_TOP10
+    @RequestMapping("/query/PU_TOP10")
     @ResponseBody
     public String queryPU_TOP10() {
         return new Gson().toJson(service.queryPU_TOP10());

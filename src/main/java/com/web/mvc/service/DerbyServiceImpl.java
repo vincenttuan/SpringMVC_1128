@@ -4,8 +4,10 @@ import com.web.mvc.repository.DerbyDAO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
-public class DerbyServiceImpl implements DerbyDAO {
+@Service
+public class DerbyServiceImpl implements DerbyService {
     @Autowired
     @Qualifier(value = "derbyDao")
     private DerbyDAO dao;
