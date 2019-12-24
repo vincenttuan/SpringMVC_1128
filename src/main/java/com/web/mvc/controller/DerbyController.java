@@ -35,5 +35,13 @@ public class DerbyController {
     public String queryPU_TOP10() {
         return new Gson().toJson(service.queryPU_TOP10());
     }
+    
+    @RequestMapping("/query/PU")
+    public String queryP(Model model) {
+        model.addAttribute("PU_TOTAL", service.getPU_TOTAL());
+        model.addAttribute("PU_TOP10", service.queryPU_TOP10());
+        model.addAttribute("PU_VIEW", service.queryPU_VIEW());
+        return "derby_pu";
+    }
 
 }
